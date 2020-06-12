@@ -6,7 +6,6 @@ Before doing the composer require, please add a VCS Repository
 ```json
 // composer.json
 ...
-
 "repositories": [
 	{
 		"type": "vcs",
@@ -23,10 +22,7 @@ composer require diskominfotik/pwdskt
 
 ```
 
-
-
 ## Usage
-
 ``` php
 // publish configuration
 php  artisan  pwdskt:publish
@@ -55,7 +51,7 @@ public  function  boot()
 {
 	...
 	\Illuminate\Support\Facades\Auth::provider('pwdskt', function ($app, array  $config) {
-		return  new  \Diskominfotik\PwdSkt\PwdSktProvider($app['hash'], $config['model']);
+		return  new  \Diskominfotik\Pwdskt\PwdsktProvider($app['hash'], $config['model']);
 	});
 	...
 }
