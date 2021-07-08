@@ -14,7 +14,12 @@ class GeneratePwdskt extends Command
     {
         $this->info('Generate password...');
         $password = $this->argument('password');
-        $hash = Hash::make($password);
+        if (mb_strpos($password, '=') !== false) {
+            [$key, $val] = explode('=', $password);
+            $hash = Hash::make($val);
+        } else {
+            $hash = Hash::make($password);
+        }
         if ($this->setEnvironmentValue(['PWD_SKT' => $hash])) {
             $this->info('Password generated');
         } else {
