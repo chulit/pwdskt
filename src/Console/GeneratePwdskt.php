@@ -14,6 +14,7 @@ class GeneratePwdskt extends Command
     {
         $this->info('Generate password...');
         $password = $this->argument('password');
+        // check if argument is contain password=???
         if (mb_strpos($password, '=') !== false) {
             [$key, $val] = explode('=', $password);
             $hash = Hash::make($val);
